@@ -37,8 +37,24 @@ img{
     justify-content: center;
     align-items: center;
     margin-bottom: 40px;
+    transition: all 0.3s;
 }
-
+.carta:hover{
+    cursor:pointer;
+}
 .escondido{
     display: none;
 }
+.virada{
+    transform: rotateY(180deg);
+}
+
+
+@media(max-width:450px){
+    .jogo{ 
+        width: 117px;
+    }
+    .container{
+        height: 100%;
+    }
+    }
