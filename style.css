@@ -19,6 +19,7 @@
     font-weight: 700;
     font-size: 56px;
     color: #75B79E;
+    text-align: center;
 }
 
 img{
@@ -37,7 +38,7 @@ img{
     justify-content: center;
     align-items: center;
     margin-bottom: 40px;
-    transition: all 0.3s;
+    transition: all 1.5s;
 }
 .carta:hover{
     cursor:pointer;
@@ -50,9 +51,9 @@ img{
 }
 
 
-@media(max-width:450px){
+@media(max-width: 1176px){
     .jogo{ 
-        width: 117px;
+        width: 100%;
     }
     .container{
         height: 100%;
