@@ -9,7 +9,6 @@ let quantidadeCartas
 //fim das variáveis globais
 
 
-
  quantidadeCartas= Number(prompt("Com quantas cartas irá jogar? (números pares de 4 á 14)"));
 while(quantidadeCartas<4 || quantidadeCartas>14 || quantidadeCartas%2!==0){
     alert('Número de cartas inválidos');
@@ -95,15 +94,21 @@ function acertouOuErrou(item){
     }
 }
 
-//finalizar jogo
+
 const fim= setInterval(Finalizar, 1)
 function Finalizar(){
 if (todasAsCartas.length==quantidadeCartas && todasAsCartas.length!=0){
     alert(`Parabéns 🎉🎊 você ganhou em ${rodadas} rodadas 🦜`)
+    let jogarDeNovo= prompt("Deseja jogar novamente? (digite 'sim' ou 'não')")
+    while (jogarDeNovo !== "sim" && jogarDeNovo !== "não"){
+    jogarDeNovo= prompt("Deseja jogar novamente?(digite 'sim ou 'não')")
+    }
+    if (jogarDeNovo==="sim"){
+        location.reload()
+    }
     clearInterval(fim)
 }
 }
-
 
 
 function comparador() { 
