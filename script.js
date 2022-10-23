@@ -1,5 +1,6 @@
 //varáveis globais
 let arrayComparar=[]
+let NaoClicaDuasVezes=[]
 let arrayImagens=[]
 let arrayItem=[]
 let arrayGifs=[]
@@ -28,9 +29,9 @@ cartas.sort(comparador)
 let jogo= document.querySelector("ul")
 let contador=0
 while (quantidadeCartas>contador){
-jogo.innerHTML+=`<div class="carta" onclick="virarCarta(this), setTimeout(acertouOuErrou, 1100, this)">
+jogo.innerHTML+=`<div class="carta" onclick="virarCarta(this), setTimeout(acertouOuErrou, 1050, this)">
 <li> <img class="imagem" src="imagens/back.png"/> </li>
-<li> <img class="gif escondido" id="${cartas[contador]}" src="imagens/${cartas[contador]}.gif"/> </li>
+<li> <img class="gif carta${contador} escondido" id="${cartas[contador]}" src="imagens/${cartas[contador]}.gif"/> </li>
 </div>`
 contador++
 }
@@ -38,15 +39,15 @@ contador++
 
 function virarCarta(item) {
     const cartaFrente=item.querySelector("img")
-    setTimeout (()=>cartaFrente.classList.add("escondido"), 0550)
+    setTimeout (()=>cartaFrente.classList.add("escondido"), 0600)
     item.classList.add("virada")
     const cartaGif=item.querySelector(".gif")
-    setTimeout (()=>cartaGif.classList.remove("escondido"), 0550)
+    setTimeout (()=>cartaGif.classList.remove("escondido"), 0600)
     }
 
 
 function acertouOuErrou(item){
-    if (!item.classList.contains("pronto")){
+    if (!item.classList.contains("naoDesviraMais")){
     let qualCarta = item.querySelector(".gif").id
     arrayComparar.push(qualCarta)
 
@@ -57,6 +58,7 @@ function acertouOuErrou(item){
     arrayGifs.push(cartaGif)
     arrayItem.push(item)
     }
+    console.log(item)
 
     if(arrayComparar.length==2){
      let carta1= arrayComparar[0]
@@ -68,19 +70,28 @@ function acertouOuErrou(item){
      let arrayItem1= arrayItem[0]
      let arrayItem2= arrayItem[1]
 
+     //para desvirar quando clica duas vezes na mesma carta
+    if(arrayItem1===arrayItem2){
+        setTimeout (()=> arrayImagens1.classList.remove("escondido"), 0600)
+        setTimeout (()=> arrayGifs1.classList.add("escondido"), 0600)
+           arrayItem1.classList.remove("virada")
+           rodadas=rodadas+1
+           array=[]
+    }
+
 
      if(carta1 !== carta2 ){
-     setTimeout (()=> arrayImagens1.classList.remove("escondido"), 0550)
-     setTimeout (()=> arrayImagens2.classList.remove("escondido"), 0550)
-     setTimeout (()=> arrayGifs1.classList.add("escondido"), 0550)
-     setTimeout (()=> arrayGifs2.classList.add("escondido"), 0550)
+     setTimeout (()=> arrayImagens1.classList.remove("escondido"), 0600)
+     setTimeout (()=> arrayImagens2.classList.remove("escondido"), 0600)
+     setTimeout (()=> arrayGifs1.classList.add("escondido"), 0600)
+     setTimeout (()=> arrayGifs2.classList.add("escondido"), 0600)
         arrayItem1.classList.remove("virada")
         arrayItem2.classList.remove("virada")
         rodadas=rodadas+2
      }
-     else if(carta1 === carta2){
-        arrayItem1.classList.add("pronto")
-        arrayItem2.classList.add("pronto")
+     else if(carta1 === carta2 & arrayItem1!==arrayItem2){
+        arrayItem1.classList.add("naoDesviraMais")
+        arrayItem2.classList.add("naoDesviraMais")
         todasAsCartas.push(arrayItem1)
         todasAsCartas.push(arrayItem2)
         rodadas=rodadas+2
