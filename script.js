@@ -6,7 +6,8 @@ let arrayItem=[]
 let arrayGifs=[]
 let rodadas=0;
 let todasAsCartas=[]
-let quantidadeCartas
+let quantidadeCartas;
+let tempo;
 //fim das variáveis globais
 
 
@@ -109,10 +110,11 @@ function acertouOuErrou(item){
 const fim= setInterval(Finalizar, 1)
 function Finalizar(){
 if (todasAsCartas.length==quantidadeCartas && todasAsCartas.length!=0){
-    alert(`Parabéns 🎉🎊 você ganhou em ${rodadas} rodadas 🦜`)
+    clearInterval(relogio)
+    alert(`Parabéns 🎉🎊 você ganhou em ${rodadas} rodadas \n e com um tempo de ${tempo} segundos 🦜🎉`)
     let jogarDeNovo= prompt("Deseja jogar novamente? (digite 'sim' ou 'não')")
     while (jogarDeNovo !== "sim" && jogarDeNovo !== "não"){
-    jogarDeNovo= prompt("Deseja jogar novamente?(digite 'sim ou 'não')")
+    jogarDeNovo= prompt("Deseja jogar novamente? (digite 'sim ou 'não')")
     }
     if (jogarDeNovo==="sim"){
         location.reload()
@@ -121,6 +123,11 @@ if (todasAsCartas.length==quantidadeCartas && todasAsCartas.length!=0){
 }
 }
 
+const relogio= setInterval(tempoJogo, 1000)
+function tempoJogo(){
+     tempo= document.querySelector(".timer")
+    tempo= tempo.innerHTML=Number(tempo.innerHTML)+1
+}
 
 function comparador() { 
     return (Math.random() - 0.5) }

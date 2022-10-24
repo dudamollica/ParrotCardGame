@@ -13,7 +13,6 @@
     flex-wrap: wrap;
 }
 .titulo{
-    padding-top: 40px;
     padding-bottom: 47px;
     font-family: 'Roboto';
     font-weight: 700;
@@ -49,6 +48,37 @@ img{
 .virada{
     transform: rotateY(180deg);
 }
+.barra-superior{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 450px;
+    padding-top: 20px;
+}
+.relogio{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   background: #A7E9AF;
+   border: 1px solid #75B79E;
+   border-radius: 50%;
+   font-family: 'Roboto';
+   font-weight: 700;
+   padding: 10px;
+   width: 80px;
+   height: 60px;
+}
+.relogio span{
+    padding-top: 8px;
+    color:white;
+    font-size: 20px;
+}
+.timer{
+    margin-top: 8px;
+    font-size: 25px;
+    color:white;
+
+}
 
 
 @media(max-width: 1176px){
@@ -57,5 +87,22 @@ img{
     }
     .container{
         height: 100%;
+    }
+    .barra-superior{
+        margin-right: 30px;
+    }
+    }
+
+    @media(max-width: 795px){
+  .barra-superior{
+        margin-right: 0px;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+    .titulo{
+        margin-top: 10px;
+    }
+    .jogo{
+        padding-left: 20px;
     }
     }
